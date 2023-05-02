@@ -192,6 +192,12 @@ select{
   padding-left: 10px;
 }
 
+.featured-recipes{
+  color: #955132;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
 
 /* recipe container styles */
 

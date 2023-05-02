@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Recipe App
+live site link:
+https://recipe-app-806r.onrender.com/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![home page](./homePage.png)
 
-## Available Scripts
 
-In the project directory, you can run:
+# About The Project
 
-### `npm start`
+## Getting Started
+Those instructions will help you to install and run the application on your local device.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Built With
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* React
+* NodeJS 
+* Dotenv (https://www.npmjs.com/package/dotenv)
+* Bootstrap (https://www.npmjs.com/package/react-bootstrap)
+* JavaScript 
+* HTML5
+* CSS 
 
-### `npm test`
+* API (https://developer.edamam.com/edamam-recipe-api)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+you will need:
+git: (https://git-scm.com/downloads)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To clone this project onto your devise, copy the following line into your terminal. 
+* Dont forget to choose proper directory to clone to.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+git clone https://github.com/DariaSidorko/mastermind-game.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone the repo
 
-### `npm run eject`
+git clone https://github.com/your_username_/Project-Name.git
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+run in React terminal:
+npm install
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* to run the application run in your terminal
+npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## App Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Recipe Search Application
+  Features:
+- Home page features random 6 recipies
+- General recipe search.
+- Search by meal type.
+- Search by cusine type.
+- Filter by calories limit.
+- Filter by Gluten Free and Dairy Free options.
+- Main page output 20 searched recipes. Use Next and Previous buttons to navigate through the rest of the search result recipies.
+- Generate Shopping list from multiple recepies.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* The About Page is currently under development. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+If you have a suggestion that would make this better, please fork the repo and create a pull request or open an issue with the tag "enhancement".
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3. Commit your Changes (git commit -m 'Add some AmazingFeature')
+4. Push to the Branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
 
-### Analyzing the Bundle Size
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Project Link: https://github.com/DariaSidorko/recipe-app.git
 
-### Making a Progressive Web App
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+render.com
+React Bootstrap
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT © DariaSidorko

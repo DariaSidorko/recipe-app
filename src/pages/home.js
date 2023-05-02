@@ -1,5 +1,5 @@
 
-import { getData, getRecipe, getNext, getPrevious } from '../services/recipe-api.js'
+import { getData, getRecipe, getNext, getPrevious, getFeaturedRecipe, getFeaturedRecipeData } from '../services/recipe-api.js'
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -14,19 +14,33 @@ export default function Home () {
   const [glutenFree, setGlutenFree] = useState(true);
   const [dairyFree, setDairyFree] = useState(true);
 
+  const [randomRecipe, setFeaturedRecipe] = useState();
+
 let data;
 
  let cusineTipes =  ['Any Type', 'American', 'Asian', 'British', 'Caribbean', 'Central Europe', 'Chinese', 'Eastern Europe', 'French', 'Greek', 'Indian', 'Italian', 'Japanese', 'Korean', 'Kosher', 'Mediterranean', 'Mexican', 'Middle Eastern',	'Nordic', 'South American'];
 
   let mealType = [ '', 'Breakfast', 'Lunch', 'dinner', 'snack', 'teatime']
   
+  let randomRecepies;
+  if (!randomRecipe) {
+    randomRecepies = getFeaturedRecipe();
+    randomRecepies.then((temp)=> {
+      if (temp) setFeaturedRecipe(temp); 
+     })
+  }
+ 
+
   let tempData;
   if (data == undefined) {
     tempData = getData();
   }
 
+
+
   useEffect(() => {
     setRecipes(tempData);
+    setFeaturedRecipe(randomRecepies)
   }, [tempData]);
 
 
@@ -35,7 +49,7 @@ let data;
    data.then((temp)=> {
     if (temp) setRecipes(temp); 
    })
-   setRecipes(data)
+   //setRecipes(data)
   }
 
   const nextPage = () => {
@@ -164,10 +178,64 @@ let data;
             : <div> </div>
           }
         </div>
+
           <div className="previous-next">
               {recipes ? <button onClick={previoustPage}> previous page </button>: <div></div> }
               {recipes ? <button onClick={nextPage}> next page </button> : <div></div> }
           </div>
+          <h3 className="featured-recipes"> Featured Recipes</h3>
+          <div className="recipe-container">   
+          {
+          randomRecipe && randomRecipe.hits !== undefined ?
+          randomRecipe.hits.map((each, i) => { 
+            if (i < 6){
+              let symbol = each.recipe.label
+              return (
+                <div className="recipe-card">
+                  <Link to={`/${symbol}`} state={each}  className="link">
+                    <img src={each.recipe.images.REGULAR.url} alt="" width="300px" height="160px" />
+                    <div className="recipe-name-section">
+                      <h4> {each.recipe.label}</h4>
+                      <div className="recipe-details-section">                      
+                          {
+                            each.recipe.healthLabels.map((label) => {
+                              if(label == "Gluten-Free") 
+                              return (<div className="labels"> 
+                              <div className="allergy"><p className="allergy"> Gluten</p> <p className="allergy"> Free</p></div>
+                              </div>)
+                            })
+                            }
+                          {
+                            each.recipe.healthLabels.map((label) => {
+                              if(label == "Dairy-Free") 
+                              return (<div className="labels allergy"> 
+                              <div className="allergy"><p className="allergy"> Dairy</p> <p className="allergy"> Free</p></div>
+                              </div>)
+                            })
+                            }
+                        <div  className="labels"> 
+                          <p>Ingred:</p> 
+                          <p>{each.recipe.ingredientLines.length}</p>
+                        </div>
+                        <div className="labels">  
+                          <p>Cal: </p> 
+                          <p>{Math.round(each.recipe.calories)}</p>
+                        </div>
+                        <div className="labels">  
+                          <p>Time:</p> 
+                          <p>{each.recipe.totalTime} min</p>
+                        </div>
+                    </div>
+                    </div>
+                  </Link>
+                </div>
+                
+              )
+                          }
+              })
+            : <div> </div>
+          }
+        </div>
     </div>     
     );
     
