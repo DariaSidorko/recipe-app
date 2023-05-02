@@ -2,6 +2,7 @@
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 import { Link, useLocation } from "react-router-dom";
+import { setShoppingList, removeFromShoppingList } from '../services/recipe-api.js';
 
 let shoppingList = [];
 
@@ -9,45 +10,37 @@ export default function Stock (props){
   const params = useParams()
   const symbol = params.symbol;
 
-  const [recipe, setRecipe] = useState(null);
+  let [list, setList] = useState([]);
+  // const [recipe, setRecipe] = useState(null);
 
   const location = useLocation()
   const data  = location.state;
 
-  let addToList = false;
-
-  const addToShoppingList = (ingredient) => {
-    if(ingredient !== '') shoppingList.push(ingredient);
-    console.log(shoppingList);
-  }
   
-
+  let array = [];
   return (
     <div className="recipe-page">
-      <img src="https://www.seriouseats.com/thmb/WzQz05gt5witRGeOYKTcTqfe1gs=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/butter-basted-pan-seared-steaks-recipe-hero-06-03b1131c58524be2bd6c9851a2fbdbc3.jpg" alt="" width="100%" height="200px" />
+      <img src={data.recipe.images.REGULAR.url} alt="" width="60%" height="50%" />
 
       <div className="recipe-page-details">
-        <div>{data.recipe.label}</div>
+        <h2>{data.recipe.label}</h2>
 
         <div className="recipe-details-section">
-                          <div className="labels"> 
-                            {/* {console.log(each.recipe.healthLabels)} */}
-                            {
-                              data.recipe.healthLabels.map((label) => {
-                                if(label == "Gluten-Free") 
-                                return (<div><p> Gluten</p> <p> Free</p></div>)
-                              })
-                              }
-                          </div>
-                          <div className="labels"> 
-                            {/* {console.log(each.recipe.healthLabels)} */}
+                          { data.recipe.healthLabels.map((label) => {
+                              if(label == "Gluten-Free") 
+                                return ( <div className="labels"> 
+                                  <div><p> Gluten</p> <p> Free</p></div>
+                                 </div>) 
+                              })  
+                          }
                             {
                               data.recipe.healthLabels.map((label) => {
                                 if(label == "Dairy-Free") 
-                                return (<div><p> Dairy</p> <p> Free</p></div>)
+                                return (<div className="labels"> 
+                                <div><p> Dairy</p> <p> Free</p></div>
+                                </div>)
                               })
-                              }
-                          </div>
+                            }
                           <div  className="labels"> 
                             <p>Ingred:</p> 
                             <p>{data.recipe.ingredientLines.length}</p>
@@ -62,26 +55,27 @@ export default function Stock (props){
                           </div>
                        </div>
 
-        <h5>Ingredients</h5>
-        <div>{data.recipe.ingredients.map((ingr) => {
-          return (<div>
-            {/* <input checked = {addToList}
-                  onChange={(e) => { if (addToList){  
-                    addToShoppingList(ingr.text); 
-                    addToList = false;
+        <h5 >Ingredients</h5>
+        <div  className="ingredients">{data.recipe.ingredients.map((ingrid, i) => {
+          array.push('false')
+          return (<div className="ingredients-page-row">
+            <input type="checkbox" id="check" name="option" className="checkBox" checked = {list[i]}
+                  onChange={(e) => { if (list[i]){  
+                    removeFromShoppingList(ingrid.text);
+                    list[i] = false;
                   }
-                  else {
-                    addToShoppingList('');
-                    addToList = true;
-                   } }} ></input> */}
-            <label>{ingr.text}</label>
+                  else { 
+                    shoppingList.push(ingrid.text);
+                    setShoppingList(shoppingList);
+                    list[i] = true;
+                   } }} ></input>
+            <label>{ingrid.text}</label>
             </div>)
         })}</div>
         <h5>Directions</h5>
         <div>
           <span>Source: <a href={data.recipe.url} target="_blank">{data.recipe.source}</a></span>
         </div>
-        {/* <iframe src="http://www.seriouseats.com/recipes/2011/12/chicken-vesuvio-recipe.html" width={600} height={500}/> */}
       </div>
       
     </div>

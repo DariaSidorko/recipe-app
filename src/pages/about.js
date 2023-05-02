@@ -1,5 +1,5 @@
 
 
 export default function About (props){
-  return <h1>This is the About Component</h1>;
+  return <h2 style={{color:'#DEBD9B'}}>This is the About Page</h2>;
 };

@@ -1,5 +1,4 @@
 *{
-  
   color: #3C2320;
 }
 
@@ -16,10 +15,20 @@ h1{
   color: #D09150;
 }
 
+h2{
+  padding-top: 20px;
+}
+
 h4{
   color: #955132;
   font-size: 18px;
   min-height: 58px;
+  padding: 10px 10px 0 10px;
+}
+
+h5{
+  padding-top: 20px;
+  color: #955132;
 }
 
 header {
@@ -89,11 +98,27 @@ img{
   margin: 10px 0;;
 }
 
+.search-form{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.search-form>*{
+  margin: 0 15px;
+}
+
 .search{
   display:flex;
   flex-direction: row;
   padding: 15px 0;
 }
+
+/* .form-control-search{
+  width: 500px;
+} */
 
 label {
   padding-right: 10px;
@@ -120,34 +145,33 @@ input.form-control{
 }
 
 .form-control:focus {
-  border-color: #FF0000;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+  border-color: rgb(208, 145, 80);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #D09150;;
 }
 
 .form-switch .form-check-input {
-  height: 24px;
-  width: 48px;
+  height: 18px;
+  width: 40px;
 }
+
 .form-switch .form-check-input:focus {
-  border-color: rgba(0, 0, 0, 0.25);
+  border-color: rgba(114, 112, 112, 0.25);
   outline: 0;
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2' fill='rgba(0,0,0,0.25)'/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(208, 145, 80, 0.9)'/></svg>");
 }
 
 
 .form-check-input:focus{
-  border-color: #FF0000;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
-  color: green!important;
+  border-color: #D09150;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #D09150;;
 }
-
 
 select{
     width: 100%;
     padding: 6px 0;
     font-size: 12px !important;
-    color: #b0b0b8;
+    color: #777777;
     background-color: #fcfcfc;
     border: 1px solid #f9f9f9;
     border-radius: 0;
@@ -164,13 +188,32 @@ select{
   border-color: #955132;
 }
 
+.allergy-label{
+  padding-left: 10px;
+}
+
 
 /* recipe container styles */
 
 a.link:hover{
-  opacity: 100%;
-  box-shadow: 5px 5px 10px rgb(159, 158, 158);
-  zoom: 100.8%;
+  opacity: 1;
+  background-color: white;
+  /* zoom: 101.2%; */
+  animation: zoom-in-zoom-out 1s ease 1;
+  /* box-shadow: 5px 5px 10px rgb(159, 158, 158); */
+  transition: box-shadow 1s ease-in;
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.06, 1.06);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
 
 .recipe-container{
@@ -185,22 +228,35 @@ a.link:hover{
   display:flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
-  /* border-style: solid;
-  border-width: 1px; */
   margin: 10px;
   min-width: 300px;
   max-width: 300px;
-  min-height: 290px;
+  /* min-height: 280px; */
   max-height: 300px;
-  /* border-color: #e1e1e1; */
   background-color: rgb(254, 254, 254);
+  animation: fadeInAnimation ease 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
+}
+
 .recipe-name-section{
   display:flex;
   flex-direction: column;
-  margin: 15px 10px 0 10px;
+  animation: zoom-in-zoom-out 1s ease 1;
+  box-shadow: 5px 5px 10px rgb(181, 181, 181);
+  transition: box-shadow 1s ease-in;
 }
+
+
 
 .recipe-details-section{
   display:flex;
@@ -217,11 +273,26 @@ a.link:hover{
 }
 
 .recipe-details-section>*:not(:last-child) {
-  border-right: 1px solid rgb(212, 206, 206) ;
+  border-right: 1px solid rgb(199, 193, 193) ;
  }
 
  .labels {
   padding: 0 8px;
+ }
+
+ .allergy{
+  color: #955132;
+  font-weight: bold;
+  opacity: 90%;
+ }
+
+ .previous-next{
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+ }
+ .previous-next>*{
+  margin: 0 30px;
  }
 
 
@@ -234,3 +305,48 @@ a.link:hover{
  .recipe-page-details{
   padding: 20px 40px;
  }
+
+ .ingredients-page-row{
+  display: flex;
+  flex-direction: row;
+  padding: 5px 0;
+ }
+
+ .ingredients{
+  text-align: left;
+  padding: 0 110px;
+ }
+
+ .checkBox{
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #D09150;
+  content: "";
+  background: #FFF;
+ }
+
+.removeBtn{
+  width: 20px;
+  height: 20px;
+  background-color: #EBEBEF;
+  font-size: 12px;
+  padding: 0px;
+  color: #DEBD9B;
+  margin-left: 10px;
+  font-weight: bold;
+ }
+
+ .removeBtn:hover{
+  background-color: rgb(225, 225, 225);
+  border: none;
+ }
+
+ .listOfIngredients{
+  text-align: left;
+  padding: 5px 30%;
+ }
+
+
+
+

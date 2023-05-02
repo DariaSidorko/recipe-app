@@ -9,9 +9,9 @@ export default function Nav (props){
       <Link to="/about" className="menu-link">
         <div className="menu-link">ABOUT</div>
       </Link>
-      {/* <Link to="/recepie">
-        <div>Dashboard</div>
-      </Link> */}
+      <Link to="/shoppingList">
+        <div>SHOPPING LIST</div>
+      </Link>
     </header>
   );
 };

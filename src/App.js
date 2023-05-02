@@ -6,6 +6,7 @@ import { getRecipeAllData } from './services/recipe-api.js'
 import Home from './pages/home.js'
 import About from './pages/about.js'
 import Recipe from './pages/recipe.js'
+import ShoppingList from './pages/shoppingList.js'
 import Nav from './components/Nav.js'
 import { Route, Routes } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
@@ -21,6 +22,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/about" element={<About/>}/>
+          <Route path="/shoppingList" element={<ShoppingList/>}/>
           <Route path="/:symbol" element={<Recipe/>}/>
           {/* <Route path="/recipe" element={<Dashboard/>}/> */}
         </Routes>
